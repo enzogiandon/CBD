@@ -151,9 +151,9 @@ begin
   readArch(archFlor);
   // PUNTO D
   anadirFinal(archFlor);
-
   readArch(archFlor);
 
+  //PUNTO E
   writeln('Ingrese el nombre del archivo de texto');
   readln(nomArch);
   Assign(arch, nomArch);
