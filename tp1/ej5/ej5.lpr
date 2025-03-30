@@ -49,6 +49,33 @@ type
     Close(arch);
   end;
 
+  procedure totMinMax(var arch: archFlores);
+  var
+    f, fMax, fMin: flor;
+    tot: integer;
+  begin
+    tot := 0;
+    fMin.altura := MaxInt;
+    fMax.altura := -1;
+    reset(arch);
+    if (EOF(arch)) then
+      writeln('El archivo esta vacio')
+    else
+    begin
+      repeat
+        Read(arch, f);
+        if (f.altura > fMax.altura) then
+          fMax := f;
+        if (f.altura < fMin.altura) then
+          fMin := f;
+        tot := tot + 1;
+      until EOF(arch);
+      writeln('El total de especies es de ', tot);
+      writeln('La especie de menor altura es ', fMin.nomCient);
+      writeln('La especie de mayor altura es ', fMax.nomCient);
+
+    end;
+  end;
 
   procedure readArch(var arch: archFlores);
   var
@@ -143,6 +170,9 @@ begin
 
   //PUNTO 5
   writeArch(archFlor);
+
+  // PUNTO A
+  totMinMax(archFlor);
 
   //PUNTO B
   readArch(archFlor);
