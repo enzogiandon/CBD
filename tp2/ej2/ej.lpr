@@ -13,9 +13,9 @@ type
     ventas: integer;
   end;
 
-  detalle = file of disco;
+  archivo = file of disco;
 
-  procedure leer(var archivo: detalle; var dato: disco);
+  procedure leer(var archivo: archivo; var dato: disco);
   begin
     if (not EOF(archivo)) then
       Read(archivo, dato)
@@ -26,7 +26,7 @@ type
 
 
 var
-  det: detalle;
+  arc: archivo;
   txt: Text;
   reg: disco;
 
@@ -40,16 +40,16 @@ var
 begin
   reg := default(disco);  // para que no haya warnings
 
-  Assign(det, 'detalle.dat');
+  Assign(arc, 'archivo.dat');
   Assign(txt, 'ventas.txt');
 
-  reset(det);
+  reset(arc);
   rewrite(txt);
 
 
   total := 0;
   repeat
-    leer(det, reg);  // asumo que no esta vacio (para la primera vez)
+    leer(arc, reg);  // asumo que no esta vacio (para la primera vez)
 
     // inicializo para el autor actual:
     codAct := reg.codAutor;
@@ -76,7 +76,7 @@ begin
         Writeln(txt, 'Nombre del disco: ', reg.nomDisco, '. Nombre del autor: ',
           reg.nomAutor, '. Cantidad vendida: ', reg.ventas);
 
-        leer(det, reg);
+        leer(arc, reg);
 
       end;
       writeln();
@@ -88,6 +88,6 @@ begin
   until (reg.codAutor = FIN);
 
   Close(txt);
-  Close(det);
+  Close(arc);
 
 end.
