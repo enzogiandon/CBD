@@ -23,16 +23,14 @@ type
 
   archMozos = file of mozo;
 
-
-
   procedure leer(var archivo: archServicios;var dato: servicio);
-begin
+  begin
   if (not eof(archivo)) then
      read(archivo,dato)
   else
       dato.codMozo:=FIN;
 
-end;
+  end;
 
 
 var
@@ -57,8 +55,6 @@ begin
    // Leo por primera vez y asumo que no está vacío
    leer(aServicios,s);
 
-
-
    repeat
 
      // Para cada servicio, sumo según el último mozo.
@@ -71,12 +67,7 @@ begin
 
      write(aMozos,mozoAct);
 
-
-
-
-
    until (s.codMozo= FIN);
-
 
    close(aMozos);
    close(aServicios);
