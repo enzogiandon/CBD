@@ -101,7 +101,11 @@ const
     end;
   end;
 
-
+ 
+{
+Recien cuando llegue al punto g) cai, creo que había que agregar siempre al
+final sin recuperar las bajas logicas, pero bueno, fue.
+}
   procedure alta(var arch: archProductos);
   var
     aux, nuevoP: producto;
@@ -272,3 +276,16 @@ const
 begin
 
 end.
+
+{
+PUNTO G (no te regales)
+
+La principal ventaja de la técnica de recuperación de espacio libre es el
+aprovechamiento de los espacios que se van dejando, cosa que ahorra el
+crecimiento indefinido del tamaño del archivo.
+
+
+
+
+
+}
